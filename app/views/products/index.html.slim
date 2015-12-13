@@ -1,2 +1,6 @@
 = form_tag '/products', method: :get do
-  = search_field_tag :name
+  .row.collapse
+    .medium-10.columns
+      = search_field_tag :name, nil, placeholder: 'Type product name to search'
+    .medium-2.columns
+      = submit_tag :search, class: 'button postfix'
