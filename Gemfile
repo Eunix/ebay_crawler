@@ -13,6 +13,7 @@ gem 'slim-rails'
 gem 'foundation-rails'
 gem 'font-awesome-rails'
 gem 'config'
+gem 'sucker_punch', '~> 1.0'
 
 group :development, :test do
   gem 'pry-byebug'

@@ -1,6 +1,8 @@
-= form_tag '/products', method: :get do
+= form_tag '/products', method: :get, remote: true do
   .row.collapse
     .medium-10.columns
-      = search_field_tag :name, nil, placeholder: 'Type product name to search'
+      = search_field_tag :query, nil, placeholder: 'Type product name to search'
     .medium-2.columns
       = submit_tag :search, class: 'button postfix'
+
+.products
