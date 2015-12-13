@@ -1,0 +1,10 @@
+= link_to 'Reload results from DB', search_products_path(@search), remote: true, class: 'button tiny'
+
+table
+  thead 
+    tr
+      th Name
+      th Description
+      th Price
+  thead
+    = render @products

@@ -1,0 +1,10 @@
+= form_for @search, remote: true do |f|
+  .row.collapse
+    .medium-10.columns
+      = f.search_field :query, placeholder: 'Type product name to search'
+    .medium-2.columns
+      = f.submit 'Search', class: 'button postfix'
+
+.waiting
+
+.products

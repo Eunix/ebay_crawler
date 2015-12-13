@@ -1,1 +1,4 @@
-$('.products').html("<%=j render partial: 'waiting' %>");
+<%- if @products.any? %>
+  $('.waiting').hide();
+  $('.products').html("<%=j render 'products' %>");
+<%- end %>

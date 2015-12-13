@@ -1,5 +1,13 @@
 class ProductsController < ApplicationController
+  before_action :set_search
+
   def index
-    EbayCrawlerJob.perform_later(params[:query]) if params[:query]
+    @products = @search.products
+  end
+
+  private
+
+  def set_search
+    @search = Search.find params[:search_id]
   end
 end
