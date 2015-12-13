@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20151213171958) do
 
   create_table "products", force: :cascade do |t|
     t.string   "name",        limit: 255
-    t.decimal  "price",                     precision: 8, scale: 2
+    t.decimal  "price",                     precision: 10, scale: 2
     t.text     "description", limit: 65535
     t.string   "link",        limit: 255
     t.datetime "created_at",                                        null: false

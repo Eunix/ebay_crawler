@@ -14,6 +14,8 @@ gem 'foundation-rails'
 gem 'font-awesome-rails'
 gem 'config'
 gem 'sucker_punch', '~> 1.0'
+gem 'nokogiri'
+gem 'monetize'
 
 group :development, :test do
   gem 'pry-byebug'

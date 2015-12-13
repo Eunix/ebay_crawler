@@ -8,7 +8,7 @@ class SearchesController < ApplicationController
   # POST /searches
   def create
     @search = Search.create search_params
-    EbayCrawlerJob.perform_later(@search) if @search
+    FetchProductsJob.perform_later(@search) if @search
   end
   
   private

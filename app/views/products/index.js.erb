@@ -1,4 +1,5 @@
 <%- if @products.any? %>
+  $('.products').show();
   $('.waiting').hide();
   $('.products').html("<%=j render 'products' %>");
 <%- end %>
