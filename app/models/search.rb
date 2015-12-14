@@ -5,20 +5,24 @@ class Search < ActiveRecord::Base
 
   validates :query, presence: true
 
+  # Fetching products from remote resources. Crawler is in use
+  # if ebay crawler setting is true (settings.yml)
   def fetch_products
-    if Settings.ebay.crawler
+    if Settings.ebay.try(:crawler)
       fetch_products_with_crawler
     else
       fetch_products_with_api
     end
   end
 
+  # Ferching products with API
   def fetch_products_with_api
     api_items.each do |api_item|
       products.create_from_api api_item
     end
   end
 
+  # Fetching products with crawler
   def fetch_products_with_crawler
     crawler_items.each do |crawler_item|
       products.create_from_crawler crawler_item
@@ -61,15 +65,22 @@ class Search < ActiveRecord::Base
       "&SECURITY-APPNAME=#{Settings.ebay.app_id}" +
       "&RESPONSE-DATA-FORMAT=JSON" +
       "&REST-PAYLOAD" +
-      "&keywords=#{query}" 
+      "&keywords=#{query}"
   end
 
+  # All search results are in .sresult class
   def crawler_items
     crawler_data.css('.sresult')
   end
 
+  # Parsing HTML page with Nokogiri
   def crawler_data
-    @crawler_data ||= Nokogiri::HTML(open(crawler_url), nil, 'utf-8')
+    @crawler_data ||= Nokogiri::HTML(crawler_page, nil, 'utf-8')
+  end
+
+  # Downloading eBay search results
+  def crawler_page
+    open(crawler_url)
   end
 
   # URL of eBay Search Page

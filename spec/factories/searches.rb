@@ -1,6 +1,5 @@
 FactoryGirl.define do
   factory :search do
-    query "MyString"
+    query 'Nikon'
   end
-
 end

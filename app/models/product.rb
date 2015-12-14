@@ -1,6 +1,7 @@
 class Product < ActiveRecord::Base
   belongs_to :search
 
+  # Creation a new product using data from API
   def self.create_from_api(api_item)
     create(
       name: api_item['title'].try(:first),
@@ -10,6 +11,7 @@ class Product < ActiveRecord::Base
     )
   end
 
+  # Creation a new product using data from crawler
   def self.create_from_crawler(crawler_data)
     create(
       name: crawler_data.css('.lvtitle').text.strip,
