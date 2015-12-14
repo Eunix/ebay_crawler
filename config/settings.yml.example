@@ -1,2 +1,3 @@
 ebay:
-  app_id: your_ebay_api_token
+  crawler: true
+  app_id: your-ebay-api-token
