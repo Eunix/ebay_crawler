@@ -16,7 +16,8 @@ class Product < ActiveRecord::Base
     create(
       name: crawler_data.css('.lvtitle').text.strip,
       link: crawler_data.css('.lvtitle a').first['href'],
-      price: Monetize.parse(crawler_data.css('.lvprice span').children.first.text).to_f
+      price: Monetize.parse(crawler_data.css('.lvprice span').children.first.text).to_f,
+      description: crawler_data.css('.lvsubtitle').text.strip
     )
   end
 end
